@@ -36,7 +36,7 @@ class App extends React.Component{
     submit(){
         console.log("New scores saved")
         this.setState({editing:false}, () => {
-            socket.emit('scoreUpdate', {...filterState(this.state), id:'02'})
+            socket.emit('scoreUpdate', {...filterState(this.state), source:'03'})
         })
     }
 

@@ -1,6 +1,7 @@
 export default function defineState(){
 
     return {
+        source:window.location.pathname === '/Desktop' ? '02' : '01',
         player1:"",
         player2:"",
         wonGames1:"",

@@ -138,7 +138,7 @@ class Sets extends React.Component {
                 if(res.data.status === 200){
                     axios.post('http://'+window.location.hostname+':9091/checkGame', {tourID:game.tourID})
                     .then(() => {
-                        this.props.socket.emit('gameChecked', {tourID:game.tourID})
+                        this.props.socket.emit('gameChecked', {tourID:game.tourID, source:'03'})
                         this.setState({loading:true}, () =>{
                             setTimeout(() => {
                                 this.setState({loading:false}, () =>{
