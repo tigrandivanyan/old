@@ -1,0 +1,180 @@
+.main{
+    width:70vw;
+    height:50vh;
+    position: relative;
+    background-color: black;
+}
+
+h1{
+    position: absolute;
+    width: 17.5vw;
+    height: 35vh;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #000000;
+}
+
+.setsRight{
+    background: #fff;
+    height: 35vh;
+    width: 17.5vw;
+    position: relative;
+}
+.setsLeft{
+    background: #fff;
+    height: 35vh;
+    width: 17.5vw;
+    position: relative;
+}
+
+.sets{
+    width: 67.2vw;
+    top: 2.5vh;
+    position: absolute;
+    left: 1.4vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.matches p{
+    position: absolute;
+    width: 14vw;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 9.1vw;
+    text-align: center;
+    color: #000000;
+}
+
+.matches{
+    position: relative;
+    transform: translateX(-50%);
+    left: 35vw;
+    display: flex;
+    width: fit-content;
+    top:2.5vh;
+}
+
+.matchesRight{
+    background-color: #fff;
+    height: 20vh;
+    width: 14vw;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    margin: 0 1vw;
+    position: relative;
+}
+.matchesLeft{
+    background-color: #fff;
+    height: 20vh;
+    width: 14vw;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    margin: 0 1vw;
+    position: relative;
+}
+
+.buttons{
+    display: flex;
+    width: 29.4vw;
+    transform: translateX(-50%);
+    position: absolute;
+    left: 35vw;
+    top: 25vh;
+    justify-content: space-around;
+}
+
+.buttons div{
+    width: 7vw;
+    height: 2.5vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    cursor: pointer;
+    color:white;
+}
+
+.add{
+    width: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid green;
+    color:green;
+    box-sizing: border-box;
+    font-size: 25px;
+    bottom: 0;
+    cursor: pointer;
+    transition: .3s;
+    border-right-width: 1px ;
+}
+
+.substract{
+    width: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid red;
+    color:red;
+    font-size: 25px;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-left-width: 1px ;
+    transition: .3s;
+}
+
+.add:hover{
+    color: white;
+    background-color: green;
+}
+
+.substract:hover{
+    color:white;
+    background-color:red;
+}
+
+.names{
+    width: 67.2vw;
+    position: absolute;
+    left: 1.4vw;
+    top: 38.5vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.names input{
+    width: 17.3vw;
+    background-color:black;
+    color:white;
+    font-size: 25px;
+}
+.internetAlert{
+
+    width: 100%;
+    position: absolute;
+    height: 5vh;
+    top: 0;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: red;
+    border:2px black solid;
+    box-sizing: border-box;
+  }
+

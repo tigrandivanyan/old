@@ -1,0 +1,131 @@
+.settings{
+    background-color: #fff;
+    width: 70vw;
+    height: 50vh;
+    border-right: 1px solid #000;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:50px;
+    padding-bottom:150px;
+    position: relative;
+}
+
+.addClose p{
+    transition: .3s;
+}
+
+
+.addSettings{
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    transform: translate(-50%, 0);
+    left:50vw;
+    bottom:2vh;
+    font-size: 25px;
+    font-weight: 100;
+    transition: .8s;
+}
+
+.addSettings:hover{
+    color: #999;
+}
+
+.addClose{
+    height: 3vh;
+    width: 42vw;
+    border-bottom: 1px solid #000;
+    font-size: 20px;
+    transition: .3s;
+    cursor:pointer;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.addClose:hover{
+    color:white;
+    background-color: #000;
+}
+
+
+.addContent{
+    display: flex;
+    /* padding:50px; */
+    text-align: center;
+    justify-content: space-between;
+}
+.addContent p:first-child{
+    margin-bottom: 10px;
+}
+
+.textOnScreen textarea {
+    width:20vw;
+    height:15vh;
+    font-size: 25px;
+    font-family: Roboto;
+}
+
+.textOnScreen button{
+    padding:5px;
+    margin: 0px 5px;
+    cursor: pointer;
+}   
+
+.delay{
+    display: flex;
+}
+.delay input{
+    transform: translateY(30%);
+    margin-left: 5px;
+}
+
+.block{
+    display: flex;
+}
+.block input{
+    transform: translateY(30%);
+    margin-left: 5px;
+}
+.idSetting{
+    padding:50px;
+}
+.inputPlace{
+    display: flex;
+    margin-bottom: 10px;
+}
+.inputPlace p{
+    font-size:25px;
+    margin-right: 10px;
+}
+.inputPlace input{
+    zoom:1.2;
+}
+.inputPlace select{
+    zoom:1.2;
+    width:-webkit-fill-available;
+}
+.idSetting button{
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    padding:5px;
+    width:-webkit-fill-available;
+    margin-top: 20px;
+}
+.idSetting .name{
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+.noGameId{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    color:white;
+    font-size: 50px;
+    padding:20px;
+    text-align: center;
+    width:calc(100% - 40px);
+    background-color: red;
+}

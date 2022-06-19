@@ -1,0 +1,273 @@
+*{
+  margin: 0;
+  padding: 0;
+  padding: 0;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+  background-color: black;
+}
+
+
+h1{
+  position: absolute;
+  width: 25vw;
+  height: 60vh;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  color: #000000;
+  font-weight: bold;
+}
+
+
+
+.setsMini{
+  background: #fff;
+  height: 60vh;
+  width: 25vw;
+  position: relative;
+}
+
+.sets{
+  width: 96vw;
+  bottom: 5vh;
+  position: absolute;
+  left: 2vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+h6{
+
+  position: absolute;
+  width: 20vw;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13vw;
+  text-align: center;
+
+  color: #000000;
+}
+
+.matches{
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50vw;
+  display: flex;
+  width: fit-content;
+  bottom:5vh;
+}
+
+.matchesMini{
+  background-color: #fff;
+  height: 30vh;
+  width: 20vw;
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  margin: 0 1vw;
+  position: relative;
+}
+
+.leftTop{
+  width: 0;
+  height: 0;
+  border-left: 20vh solid;
+  border-bottom: 20vh transparent solid;
+  float: left;
+}
+
+.rightTop{
+  width: 0;
+  height: 0;
+  border-right: 20vh solid;
+  border-bottom: 20vh transparent solid;
+  right: 0;
+  top: 0;
+  text-align: right;
+  float: right;
+}
+.save{
+  color: white;
+  position: absolute;
+  font-size: 35px;
+  top: 0;
+  left: 0;
+}
+
+.cancel{
+  color: white;
+  position: absolute;
+  font-size: 35px;
+  top: 0;
+  right: 0;
+}
+
+.edit{
+  width: 6vw;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+}
+.undo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6vw;
+}
+
+.red{
+  height: 50px;
+  width: 100%;
+  background-color: red;
+  position: absolute;
+  bottom: 0;
+}
+
+.newButtons{
+
+  transform: translate(-50%, 100%);
+  position: absolute;
+  left: 50vw;
+  width: 46vw;
+  height: 30vh;
+  bottom: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newButtons div{
+  margin: 2vw;
+  width: 20vw;
+  height: 20vh;
+  font-size: 35px;
+}
+
+.newButtons p{
+  font-size: 35px;
+  position: relative;
+}
+
+.newButtons div:first-child{
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newButtons div:nth-child(2){
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newButtons div:last-child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+}
+
+.warningText{
+  color: red;
+  font-size: 40px;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50vw;
+  top: 15vh;
+}
+
+.systemAlert{
+  background-color: red;
+  color: #fff;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  height: 15vh;
+  margin-left: 20vw;
+  position: absolute;
+  z-index: -10;
+  font-size: 60px;
+}
+
+.internetAlert{
+
+  width: 100vw;
+  position: absolute;
+  height: 10vh;
+  bottom: 0;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: red;
+  border:5px black solid;
+  box-sizing: border-box;
+}
+
+.names{
+  width: 96vw;
+  margin-left: 2vw;
+  color:white;
+  display: flex;
+  font-size: 45px;
+  position: relative;
+  top: 5vh;
+
+  justify-content: space-between;
+}
+
+.centerTop{
+  width: 10vw;
+  height: 20vh;
+  background-color: #fff;
+  position: relative;
+  left: 50vw;
+  top:0;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centerTop p {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  font-size: 30px;
+}
+
+.main{
+  width: 100vw;
+  height: 100vh;
+}
+
+.blockAll{ 
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000000000;
+  position: absolute;
+}
