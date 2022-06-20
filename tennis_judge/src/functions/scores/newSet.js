@@ -11,6 +11,7 @@ export default function newSet(component, socket) {
         wonGames1: component.state.wonGames1,
         wonGames2: component.state.wonGames2,
         names: component.state.names,
+        source: component.state.source,
       }
 
       

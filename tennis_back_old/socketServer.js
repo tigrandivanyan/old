@@ -60,13 +60,16 @@ tcpServer.on('connection', srv => {
         // srv.destroy();
     })
 
-    back.tcp.newScores = function(newScores, source){
-        kastilIO.emit('newScores', newScores, source, source);
+    back.tcp.newScores = function(newScores){
+        console.log("asdasdf")
+        kastilIO.emit('newScores', newScores);
         let reverse = back.reversed(newScores);
-        srv.write(back.tcpEncrypt(["01", source, newScores.player1, newScores.player2, newScores.wonGames1, newScores.wonGames2, reverse ? 1 : 0]))
+        srv.write(back.tcpEncrypt(["01", newScores.player1, newScores.player2, newScores.wonGames1, newScores.wonGames2, reverse ? 1 : 0]))
     };
 
     back.tcp.finishSet = function(tourID, source){
+        console.log("%%#@$#@#$%@#$&%)@(#$*&^)@(#$*%&)(@#$*%&()@#$%*&@#)$%(*@#");
+        console.log(source)
         kastilIO.emit('setFinished', tourID, source);
         Score.find({tourID}).sort({$natural:-1})
         .then(data => {
@@ -83,27 +86,27 @@ tcpServer.on('connection', srv => {
         kastilIO.emit('newGame', source);
         srv.write("**|05|**")
     };
-    back.tcp.gameChecked = function(data, source){
-        kastilIO.emit('gameChecked', data.tourID, source);
+    back.tcp.gameChecked = function(data){
+        kastilIO.emit('gameChecked', data.tourID);
         srv.write(back.tcpEncrypt(["02", data.tourID, data.wonPlayer]))
     };
 });
 
 const api = {
-    newScores:function(newScores, id){
+    newScores:function(newScores){
         let scores = {
             player1:newScores.player1,
             player2:newScores.player2,
             wonGames1:newScores.wonGames1,
             wonGames2:newScores.wonGames2,
             names:newScores.names,
-            reversed:back.reversed(newScores)
+            reversed:back.reversed(newScores),
         };
 
         ioAPI.emit('newScores', scores);
 
         if(back.tcp.newScores){
-            back.tcp.newScores(newScores, id);
+            back.tcp.newScores(newScores);
         }
     },  
     gameChecked:function(tourID){

@@ -10,7 +10,7 @@ module.exports = function(socket, ioAPI, api, io){
                     Score.updateOne(data[0], {player1:data[0].player1+1}, (msg, err) => {
                         console.log(msg, err);
                         io.emit('setScores', {player1:data[0].player1+1, ...data[0]});
-                        api.newScores({...data[0]._doc, player1:data[0].player1+1, tourID:data[0].tourID}, '03')
+                        api.newScores({...data[0]._doc, player1:data[0].player1+1, tourID:data[0].tourID})
 
                     })
                 })
@@ -27,7 +27,7 @@ module.exports = function(socket, ioAPI, api, io){
                     Score.updateOne(data[0], {player2:data[0].player2+1}, (msg, err) => {
                         console.log(msg, err);
                         io.emit('setScores', {player2:data[0].player2+1, ...data[0]})
-                        api.newScores({...data[0]._doc, player2:data[0].player2+1, tourID:data[0].tourID}, '03')
+                        api.newScores({...data[0]._doc, player2:data[0].player2+1, tourID:data[0].tourID})
 
                     })
                 })
@@ -45,7 +45,7 @@ module.exports = function(socket, ioAPI, api, io){
                     Score.updateOne(data[0], {...newScore, tourID:data[0].tourID}, (msg, err) => {
                         console.log(msg, err);
                         io.emit('setScores', {...newScore, ...data[0]});
-                        api.newScores({...data[0]._doc, ...newScore, tourID:data[0].tourID}, '03')
+                        api.newScores({...data[0]._doc, ...newScore, tourID:data[0].tourID})
                     })
                 })
             }else{

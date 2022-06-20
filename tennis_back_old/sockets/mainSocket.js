@@ -90,9 +90,10 @@ module.exports = function(socket, api, io){
                         let newDocument = { wonGames1: scores.wonGames1, wonGames2: scores.wonGames2, finished: true, time: new Date(), checked: false }
                         Score.updateOne(data[data.length - 1], newDocument, (a, b) => { })
                             .then(() => {
-                                api.newScores({ ...scores, player1: 0, player2: 0, finished: false, time: new Date(), tourID: data[data.length - 1].tourID }, '01')
+                                api.newScores({ ...scores, player1: 0, player2: 0, finished: false, time: new Date(), tourID: data[data.length - 1].tourID })
+
                                 if(back.tcp.finishSet){
-                                    back.tcp.finishSet(data[data.length - 1].tourID)
+                                    back.tcp.finishSet(data[data.length - 1].tourID, scores.source)
                                 }
                                 let oldScoreDocument = new Score({ ...scores, player1: 0, player2: 0, finished: false, time: new Date(), tourID: data[data.length - 1].tourID })
                                 oldScoreDocument.save(data[data.length - 1].tourID )
@@ -105,12 +106,12 @@ module.exports = function(socket, api, io){
             })
     })
 
-    socket.on('finishGame', () => {
+    socket.on('finishGame', (source) => {
         console.log('finish game');
         Score.find().limit(1).sort({$natural:-1})
         .then(data => {
             if(back.tcp.finishGame){
-                back.tcp.finishGame(data[data.length - 1].tourID, data[data.length - 1].wonGames1 > data[data.length - 1].wonGames2 ? 1 : 2)
+                back.tcp.finishGame(data[data.length - 1].tourID, data[data.length - 1].wonGames1 > data[data.length - 1].wonGames2 ? 1 : 2, source)
             }
             Score.updateOne(data[data.length - 1], { finishedGame: true, time: new Date(), checked: false}, (a, b) => {
                 back.getSets(undefined, io);
@@ -121,13 +122,13 @@ module.exports = function(socket, api, io){
 
     })
 
-    socket.on('newGame', () => {
+    socket.on('newGame', (source) => {
         console.log('newGame');
 
-        api.newScores({ player1: 0, player2: 0, wonGames1: 0, wonGames2: 0, startTime: new Date(), finishedGame:false }, '01');
+        api.newScores({source, player1: 0, player2: 0, wonGames1: 0, wonGames2: 0, startTime: new Date(), finishedGame:false });
 
         if(back.tcp.newGame){
-            back.tcp.newGame()
+            back.tcp.newGame(source)
         }
         let newScoreDocument = new Score({ player1: 0, player2: 0, wonGames1: 0, wonGames2: 0, startTime: new Date(), finishedGame:false })
         newScoreDocument.save()
@@ -207,7 +208,7 @@ module.exports = function(socket, api, io){
 
     })
 
-    socket.on('undoScores', changeSet => {
+    socket.on('undoScores', (changeSet, source) => {
         console.log("Undo scores socket recived")
         prevNum.find().limit(1).sort({$natural:-1})
             .then(data => {
@@ -243,7 +244,7 @@ module.exports = function(socket, api, io){
                                 if (changeSet || prevScore.wonGames1 === 5 || prevScore.wonGames2 === 5) {
                                     console.log("kildim3")
 
-                                    api.newScores({...scoreData[scoreData.length - 1], ...{ finished: false, ...newScore }}, '01')
+                                    api.newScores({...scoreData[scoreData.length - 1], ...{ finished: false, ...newScore }, source})
                                     Score.updateOne(scoreData[scoreData.length - 1], { finished: false, ...newScore })
                                         .then(() => {
                                             io.emit('setScores', { ...newScore, changeSet: false })
@@ -265,7 +266,7 @@ module.exports = function(socket, api, io){
                                 }
                             } else {
                                 console.log("kildim1");
-                                api.newScores({...scoreData[scoreData.length - 1], ...newScore}, '01')                               
+                                api.newScores({...scoreData[scoreData.length - 1], ...newScore, source})                               
                                 Score.updateOne(scoreData[scoreData.length - 1], newScore)
                                     .then(() => {
                                         io.emit('setScores', newScore)
@@ -274,7 +275,7 @@ module.exports = function(socket, api, io){
                             }
                         } else {
                             console.log("kildim");
-                            api.newScores({...scoreData[scoreData.length - 1], ...newScore}, '01')
+                            api.newScores({...scoreData[scoreData.length - 1], ...newScore, source})
                             Score.updateOne(scoreData[scoreData.length - 1], newScore)
                                 .then(() => {
                                     io.emit('setScores', newScore)
@@ -295,7 +296,6 @@ module.exports = function(socket, api, io){
     })
 
     socket.on('scoreUpdate', scores => {
-        // console.log('scoreUpdate', [scores]);
         
         let d1 = Date.now();
 
@@ -329,8 +329,10 @@ module.exports = function(socket, api, io){
 
                         prevNumDocument.save()
                             .then(() => {
+                                console.log('scoreUpdate', [scores]);
+
                                 let dd = Date.now();
-                                api.newScores({...data[data.length - 1], ...scores}, scores.id ? scores.id : '01')
+                                api.newScores({...data[data.length - 1], ...scores})
                                 Score.updateOne(data[data.length - 1], scores)
                                 .then(() => {
                                         console.log(Date.now() - dd)

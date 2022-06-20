@@ -6,7 +6,7 @@ function finishGame(component, socket){
     if (!component.state.editing) {
         if (checkIfGameCanBeFinished(component.state, 'game')) {
 
-            socket.emit('finishGame')
+            socket.emit('finishGame', component.state.source)
 
             setStates(component, {finishGameButton: false, newGameButton: true });
         }

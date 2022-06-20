@@ -62,7 +62,7 @@ function editingFunction(component, socket) {
             } else {
               setStates(component, { newSetButton: false })
             }
-            socket.emit('undoScores', component.state.changeSet)
+            socket.emit('undoScores', component.state.changeSet, component.state.source)
           } else {
             setStates(component, { warningText: "Нет предыдущих счетов" }, () => {
               setTimeout(() => {
